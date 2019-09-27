@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Knewave|Montserrat:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/jquery.mousewheel.js"></script>
+    <title>자라섬페스티벌</title>
+</head>
+<script>
+$(function(){
+    
+    $(window).scroll(function(){
+        var scrT=$(window).scrollTop();
+        var sec1=$('#sec1').offset().top;
+        var sec2=$('#sec2').offset().top;
+        var sec3=$('#sec3').offset().top;
+        // console.log(sec3)
+        
+        $('section').each(function(i){
+            var offset=$(this).offset().top;
+            var next=$(this).next().offset().top;
+            var nnext=$(this).next().next().offset().top;
+            if(scrT+400>=offset && scrT<offset+700){
+                $(this).find('.poster, .pic, .produce, .gallery-top, .gallery-thumbs').addClass('on')
+               
+            }
+            if(scrT+400>=offset && scrT<=next){
+                $('.gnb li').removeClass('on')
+                $('.gnb li').eq(i).addClass('on')
+            }
+            $('.time, .history, .ticket').each(function(i){
+                var top =$(this).offset().top
+                if(scrT+500>=top){
+                    $(this).find('li').each(function(i){
+                    $(this).delay(i*200).animate({'opacity':'1'});
+                    })
+                }
+            })
+        })
+        
+    })
+    $('.date li').click(function(){
+        var i=$(this).index();
+        $('.timetable > li').removeClass('on')
+        $('.timetable > li').eq(i).addClass('on')
+        $('.date > li').removeClass('on')
+        $('.date > li').eq(i).addClass('on')
+        
+    })
+   
+    $('.gnb li').click(function(){
+        $('.gnb li').removeClass('on')
+        $(this).addClass('on')
+        // console.log(x)
+    })
+    $('section').mousewheel(function(event,delta){
+        if(delta>0){//up
+            var prev = $(this).prev().offset().top //다음의 첫부분
+            $('html, body').stop().animate({'scrollTop': prev},400)
+        }else if(delta<0){//down
+            var next = $(this).next().offset().top //다음의 첫부분
+            $('html, body').stop().animate({'scrollTop': next},400)
+        }
+    });
+})
+</script>
+<body>
+    <!-- 배너 -->
+    <section id="sec1">
+        <nav>
+            <div class="navwrap">
+                <h1><a href="#"><img src="img/logo (1).png" alt=""></a></h1>
+                <ul class="gnb">
+                    <li></li>
+                    <li><a href="#sec2">INTRO</a><em></em></li>
+                    <li><a href="#sec3">ARTIST</a><em></em></li>
+                    <li><a href="#sec4">TIMETABLE</a><em></em></li>
+                    <li><a href="#sec5">HISTORY</a><em></em></li>
+                    <li><a href="#sec7">TICKET</a><em></em></li>
+                </ul>
+            </div>
+        </nav>
+        <u></u>
+        <div class="title">
+            <h1>JARASUM <br>JAZZ FESTIVAL
+                <em>4.5.6. OCT 2019</em>
+            </h1>
+        </div>
+    </section>
+    <!-- 소개 -->
+    <section id="sec2">
+        <h1 class="head">INTRO</h1>
+        <div class="pic">
+            <img src="img/pic.jpg" alt="">
+        </div>
+        <div class="produce">
+            <h2 class="big">제16회 자라섬재즈페스티벌</h2>
+            <p class="small">일시</p>
+            <p class="medium">2019. 10. 4(Fri) ~ 6(Sun)</p>
+            <p class="small">장소</p>
+            <p class="medium">경기도 가평군 자라섬 일대</p>
+            <p class="desc">자라섬재즈는 이미 세계적으로 인정받는 성공적인 한국형 음악축제이다. 15회 동안 55개국, 1105팀의 아티스트가 축제를 방문한 것을 보아도 국제적인 축제임을 증명하기에 부족함이 없다. 더불어 한발 더 나아가 국제적인 교류가 활발하게 진행되고 있다는 부분이 더욱 의미가 있다.
+                    자라섬 재즈는 이전에 없던 새로운 여가 문화를 만들어냈다. 바로 '음악을 잘 몰라도 즐길 수 있는 소풍 같은 축제'이다.
+                    자라섬 재즈는 음악에 대해서는 타협하지 않지만, 보다 많은 관객들에게 즐거운 경험을 선사하는 방식으로 재즈의 대중화에 앞장서고 있다. 10월에는 가평, 자라섬으로 떠나보자!
+                    </p>
+            <button><a href="http://www.jarasumjazz.com/the16th/festival/intro/kr" target="_blank">자세히보기</a></button>
+        </div>
+        <div class="poster">
+            <img src="img/poster.jpg" alt="" class="posterimg">
+        </div>
+        <img src="img/bgpoint4.png" alt="" class="point1">
+    </section>
+    <!-- 아티스트 -->
+    <section id="sec3">
+        <h1 class="head">ARTIST</h1>
+        <img src="img/bgpoint1.png" alt="" class="point2">
+        <!-- Swiper -->
+        <div class="swiper-container gallery-top">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/blackstring.jpg" alt=""></div>  
+                    <div class="txt">
+                        <h1>Black String</h1>
+                        <h2>블랙스트링</h2>
+                        <h4>10.4 | 16:30 | Jazz Island</h4>
+                        <p>블랙스트링은 한국 전통음악에 기반을 두고 있으며, 재즈의 즉흥성과 조화를 이루며 현대적이고 독특한 아름다움이 담긴 음악을 선보이고 있다. 팀 결성 이후 블랙스트링은 뉴욕 링컨센터, 워싱턴 케네디센터, 베르린 필하모닉, 덴마크 로스킬데 페스티벌, 런던 재즈페스티벌, 뉴욕 윈터 재즈 페스티벌 및 프랑스, 스페인, 독일 등 전 세계 유수의 공연장과 페스티벌의 초청 투어를 이어오고 있다. 특히 2016년에는 월드뮤직엑스포(WOMEX)의 공식 쇼케이스에 초청되었고, 2018년에는 영국의 저명한 음악전문지 송라인즈(Songlines) 뮤직어워즈에서 한국 음악가 최초로 아시아&퍼시픽 부문을 수상하는 영광을 얻었다.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/kalaha.jpg" alt=""></div>
+                    <div class="txt">
+                        <h1>Kalaha feat.Bora Kim</h1>
+                        <h2>칼라하 feat.김보라</h2>
+                        <h4>10.4 | 15:30 | Festival Lounge</h4>
+                        <p>덴마크 출신의 재즈 아티스트 두 명과 일렉트로닉 아티스트 두 명으로 구성된 칼라하(Kalaha)는, 그 조합에서 알 수 있듯이 일렉트로닉 재즈 스타일을 기반으로 하고 있지만, 멤버 각자가 지니고 있는 다양한 음악적, 문화적 배경과 경험 덕분에 상당히 다채로운 음악을 선보인다.한국 전통음악에도 관심이 많은 칼라하는 자라섬재즈페스티벌 무대를 위해 전통과 창작 국악 모두에서 뛰어난 실력으로 주목받고 있는 소리꾼 김보라를 보컬리스트로 초청했다. 최근 국악과 전자음악을 성공적으로 접목한 신노이(SINNOI)라는 프로젝트로 주목받고 있는 김보라는 칼라하와의 협연으로 이번 무대를 매우 색다르게 꾸밀 예정이다.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/makiko.jpg" alt=""></div>
+                    <div class="txt">
+                        <h1>Makiko Hirabayashi Trio</h1>
+                        <h2>마키코 히라바야시 트리오</h2>
+                        <h4>10.5 | 12:30 | Festival Lounge</h4>
+                        <p>마키코 히라바야시 트리오는 연주자 개개인이 지니고 있는 다양한 문화적 배경을 통해 하나로 규정지을 수 없는 복합적인 감성의 음악을 들려준다. 피아니스트인 마키코 히라바야시는 일본에서 태어났지만, 어린 시절을 홍콩에서 보냈고, 미국에서 음악을 전공했으며, 지금은 덴마크에서 활동하고 있다. 퍼커션을 맡고 있는 마릴린 마주르(Marilyn Mazur)는 덴마크 출신으로, 마일스 데이비스(Miles Davis) 밴드로 활동하기도 하는 등 세계적인 퍼커션계의 마스터로 인정받고 있다. 베이스를 연주하는 Klavs Hovman은 독일 출신의 연주자로, 유럽과 미국의 여러 재즈 연주자들과 꾸준히 연주해오고 있으며, 라틴 아메리카 음악에도 조예가 깊다.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/mattw.jpg" alt=""></div>
+                    <div class="txt">
+                        <h1>Matthew Whitaker Quartet</h1>
+                        <h2>매튜 휘테커 퀄텟</h2>
+                        <h4>10.5 | 19:10 | Jazz Island</h4>
+                        <p>2001년 미국 뉴저지의 해컨색이라는 작은 도시에서 태어난 매튜 휘테커는, 이제 겨우 18살이지만 벌써 데뷔 7년차의 재즈 피아니스트로, 13살에 하몬드 B-3 오르간을 제작하는 하몬드사의 최연소 후원 아티스트가 됐고, 15살에는 가장 큰 악기 제조사 가운데 하나인 야마하의 후원 아티스트가 됐다. 이미 정규 앨범을 2장이나 발표했으며, 2017년에 발표한 첫 앨범 [Outta the Box]는 그 해에 발표된 데뷔 앨범들 가운데 단연 최고의 작품이라는 평가를 받기도 했다. 지금까지 크리스찬 맥브라이드(Christian McBride), Dr. 로니 스미스(Dr. Lonnie Smith), 레지나 카터(Regina Carter) 등 수많은 재즈 거장들과 함께 무대에 올랐고, 매년 미국 전역과 유럽, 아시아 등 전세계를 돌며 공연하고 있다.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/maureen.jpg" alt=""></div>
+                    <div class="txt">
+                        <h1>Maureen Choi Quartet</h1>
+                        <h2>모린 초이 퀄텟</h2>
+                        <h4>10.6 | 13:30 | Festival Lounge</h4>
+                        <p>모린 초이 퀄텟(Maureen Choi Quartet)은 한국계 미국인 바이올리니스트인 모린 초이의 재즈 앙상블이다. 모린 초이는 5살 때부터 바이올린을 연주하기 시작하여, 미시간 주립 대학교에서 클래식을 전공했다. 그러나 재즈 베이시스트 로드니 휘테커(Rodney Whitaker)에게 받은 레슨을 계기로 재즈의 매력에 눈을 뜨게 됐고, 당시 겪은 불의의 교통사고로 회복을 위해 2년간 쉬면서 재즈 아티스트가 되기로 결심한다.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/nam.jpg" alt=""></div>
+                    <div class="txt">
+                        <h1>Yoosun Nam Quintet</h1>
+                        <h2>남유선 퀸텟</h2>
+                        <h4>10.4 | 14:30 | Festival Lounge</h4>
+                        <p>매혹적인 멜로디 메이커로 자신만의 스타일을 구축해나가는 차세대 재즈 뮤지션 
+                        서울예술대학, 버클리 음대, 뉴욕대학교, 그리고 아티스트 비자를 승인받고 뉴욕에서의
+                        음악 활동을 거쳐 10년의 미국 생활을 마친 재즈 색소포니스트 남유선은 섬세하면서도
+                        자신만의 스타일을 구축해나가는 차세대 재즈 뮤지션이다.이번 자라섬 재즈 페스티발에서는 2집 앨범 작업 멤버이기도 한 기타리스트 오진원,피아니스트 윤지희, 베이시스트 김영후, 드러머 김영진이 함께 한다. 수많은 라이브 무대를 통해
+                        구축된 완성도 높은 남유선 퀸텟만의 사운드로 2집 수록곡 중심으로 다양한 레퍼토리들을 설득력 있게 펼쳐낼 예정이다. 
+                        </p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/rymden.jpg" alt=""></div>
+                    <div class="txt">
+                        <h1>Rymden - Bugge Wesseltoft</h1>
+                        <h2>림든 - 부게 베셀토프트</h2>
+                        <h4>10.6 | 19:10 | Jazz Island</h4>
+                        <p>유럽 재즈를 사랑해온, 또는 이제 흥미를 갖기 시작한 팬이라면 꼭 기억해두어야할 이름이 하나 더 생겼다. 바로 림든(RYMDEN)이다. 피아노와 베이스, 드럼이라는 기본적인 트리오 구성의 이 앙상블은 지난해 겨울에 결성되어 채 1년도 되지 않았지만, 이미 유럽 재즈의 전설이자 첨단의 위치에 서있다. 피아니스트이자 전자 음악에도 일가견이 있는 노르웨이 출신의 Bugge Wesseltoft가 E.S.T.(에스뵈욘 스벤손 트리오, Esbjörn Svensson Trio)의 멤버였던 스웨덴 출신의 드러머 Magnus Öström과 베이시스트 Dan Berglund와 함께 팀을 이뤘기 때문이다. 이들은 지난 30여 년동안 매 순간 미래를 대변하는 첨단의 아티스트였고, 또 매번 그 순간이 지나고 나면 전설로 회자되온 인물들이다.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="img"><img src="img/lopez.jpg" alt=""></div>
+                    <div class="txt">
+                        <h1>López-Nussa La Familia</h1>
+                        <h2>로페즈-누사 라 파밀리아</h2>
+                        <h4>10.6 | 16:30 | Jazz Island</h4>
+                        <p>밴드의 주축을 맡고 있는 Harold López-Nussa는 2015년 역사적인 미국과 쿠바의 국교정상화 이후 미국에 정식으로 앨범을 발표한 첫 쿠바 아티스트다. 쿠바의 수도인 아바나(Havana)에서 태어난 그는, 8살 때부터 클래식 피아노를 배우기 시작했다. 10살에 쿠바의 피아노 콩쿨에서 우승을 한 Harold는 이탈리아 등 해외에서도 클래식 피아노로 우승을 하는 등 재능을 보였다. 이후 아버지와 삼촌의 영향으로 재즈를 연주하게 됐고, 20대 초반이던 2005년에는 스위스의 몽트뢰 재즈 페스티벌 피아노 콩쿨에서 우승하면서 세계적인 주목을 받았다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url(img/blackstring.jpg)"></div>
+                <div class="swiper-slide" style="background-image: url(img/kalaha.jpg)"></div>
+                <div class="swiper-slide" style="background-image: url(img/makiko.jpg)"></div>
+                <div class="swiper-slide" style="background-image: url(img/mattw.jpg)"></div>
+                <div class="swiper-slide" style="background-image: url(img/maureen.jpg)"></div>
+                <div class="swiper-slide" style="background-image: url(img/nam.jpg)"></div>
+                <div class="swiper-slide" style="background-image: url(img/rymden.jpg)"></div>
+                <div class="swiper-slide" style="background-image: url(img/lopez.jpg)"></div>
+            </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </section>
+    <!-- 타임테이블 -->
+    <section id="sec4">
+        <h1 class="head">TIMETABLE</h1>
+        <div class="point3"><img src="img/bgpoint3.png"></div>
+        <ul class="date">
+            <li class="on">10.4</li>
+            <li>10.5</li>
+            <li>10.6</li>
+        </ul>
+        <ul class="timetable">
+            <li class="on">
+                <ul class="time">
+                    <li>
+                        <em>14:30 <br> ~ <br> 15:20</em>
+                        <div class="right">
+                            <p>Yoosun Nam Quintet</p>
+                            <span>남유선 퀸텟</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>15:30 <br> ~ <br> 16:20</em>
+                        <div class="right">
+                            <p>Kalaha feat.Bora Kim</p>
+                            <span>칼라하 feat.김보라</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>16:30 <br> ~ <br> 17:20</em>
+                        <div class="right">
+                            <p>Black String</p>
+                            <span>블랙스트링</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>17:30 <br> ~ <br> 18:20</em>
+                        <div class="right">
+                            <p>Southern Gyeonggi Jazz</p>
+                            <span>경기남부재즈</span>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="time">
+                    <li>
+                        <em>12:30 <br> ~ <br> 13:20</em>
+                        <div class="right">
+                            <p>Makiko Hirabayashi Trio</p>
+                            <span>마키코 히라바야시 트리오</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>13:30 <br> ~ <br> 14:20</em>
+                        <div class="right">
+                            <p>Matthew Whitaker Quartet</p>
+                            <span>매튜 휘테커 퀄텟</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>14:30 <br> ~ <br> 15:20</em>
+                        <div class="right">
+                            <p>Morten Schantz GODSPEED</p>
+                            <span>모튼 샨츠 갓스피드</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>15:30 <br> ~ <br> 16:20</em>
+                        <div class="right">
+                            <p>Tineke Postma Group 'FREYA'</p>
+                            <span>티네케 포스트마 그룹 '프레야'</span>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul class="time">
+                    <li>
+                        <em>14:30 <br> ~ <br> 15:20</em>
+                        <div class="right">
+                            <p>López-Nussa La Familia</p>
+                            <span>로페즈-누사 라 파밀리아</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>15:30 <br> ~ <br> 16:20</em>
+                        <div class="right">
+                            <p>Maureen Choi Quartet</p>
+                            <span>모린 초이 퀄텟</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>16:30 <br> ~ <br> 17:20</em>
+                        <div class="right">
+                            <p>Rymden - Bugge Wesseltoft</p>
+                            <span>림든 - 부게 베셀토프트</span>
+                        </div>
+                    </li>
+                    <li>
+                        <em>17:30 <br> ~ <br> 18:20</em>
+                        <div class="right">
+                            <p>Soo Jin Suh Band</p>
+                            <span>서수진 밴드</span>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- 히스토리 -->
+    <section id="sec5">
+        <h1 class="head">HISTORY</h1>
+        <div class="point4"><img src="img/bgpoint1.png"></div>
+        <ul class="history">
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2018" target="_blank">
+                <img src="img/2018.jpg">
+                <p>제15회 | 2018. 10. 12 (FRI) – 14 (SUN)</p>
+             </a>
+            </li>
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2017" target="_blank">
+                <img src="img/2017.jpg">
+                <p>제14회 | 2017. 10. 20 (FRI) – 22 (SUN)</p>
+             </a>
+            </li>
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2016" target="_blank">
+                <img src="img/2016.jpg">
+                <p>제13회 | 2016. 10. 1 (SAT) – 3 (MON)</p>
+             </a>
+            </li>
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2015" target="_blank">
+                <img src="img/2015.jpg">
+                <p>제12회 | 2015. 10. 9 (FRI) – 11 (SUN)</p>
+             </a>
+            </li>
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2014" target="_blank">
+                <img src="img/2014.jpg">
+                <p>제11회 | 2014. 10. 3 (FRI) – 5 (SUN)</p>
+             </a>
+            </li>
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2013" target="_blank">
+                <img src="img/2013.jpg">
+                <p>제10회 | 2013. 10. 3 (THU) – 6 (SUN)</p>
+             </a>
+            </li>
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2012" target="_blank">
+                <img src="img/2012.jpg">
+                <p>제9회 | 2012. 10. 12 (FRI) – 14 (SUN)</p>
+             </a>
+            </li>
+            <li>
+             <a href="http://www.jarasumjazz.com/the16th/festival/history-2018" target="_blank">
+                <img src="img/2011.jpg">
+                <p>제8회 | 2011. 10. 1 (SAT) – 3 (MON)</p>
+             </a>
+            </li>
+        </ul>
+    </section>
+    <!-- 티켓 -->
+    <section id="sec7">
+        <h1 class="head">TICKET</h1>
+        <ul class="ticket">
+            <li>
+                <input type="checkbox">
+                <div class="toggle">+</div>
+                <img src="img/ticket.png" alt="">
+                <div class="details">
+                    <img src="img/ticketin1.png">
+                </div>
+            </li>
+            <li>
+                <input type="checkbox">
+                <div class="toggle">+</div>
+                <img src="img/ticket2.png" alt="">
+                <div class="details">
+                    <img src="img/ticketin2.png">
+                </div>
+            </li>
+            <li>
+                <input type="checkbox">
+                <div class="toggle">+</div>
+                <img src="img/ticket3.png" alt="">
+                <div class="details">
+                    <img src="img/ticketin3.png">
+                </div>
+            </li>
+            <li>
+                <a href="#" class="buy">
+                    <span class="eng">BUY TICKET</span>
+                    <span class="line"></span>
+                    <span class="kor">티켓구매</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- 푸터 -->
+    <footer>
+        <div class="wrap">
+            <h1><a href="#"><img src="img/footerlogo.png" alt="" height="60"></a></h1>
+            <ul class="menu">
+                <li>HISTORY</li>
+                <li class="bar"></li>
+                <li>SPONSOR</li>
+                <li class="bar"></li>
+                <li>NEWS</li>
+                <li class="bar"></li>
+                <li>CONTACT</li>
+            </ul>
+            <ul class="sns">
+                <li><img src="img/sns-facebook.png" alt="" width="14"></li>
+                <li><img src="img/sns-instagram.png" alt="" width="29"></li>
+                <li><img src="img/sns-blog.png" alt="" width="31"></li>
+                <li><img src="img/sns-youtube.png" alt="" width="30"></li>
+            </ul>
+        </div>
+        <p>COPYRIGHT 2019 JARASUM JAZZ FESTIVAL. ALL RIGHTS RESERVED.</p>
+        <div class="bg"></div>
+    </footer>
+</body>
+<script src="js/swiper.min.js"></script>
+<script>
+var galleryThumbs = new Swiper('.gallery-thumbs', {
+    spaceBetween: 30,
+    slidesPerView: 5,
+    loop: true,
+    freeMode: true,
+    loopedSlides:5, //looped slides should be the same
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+    513: {
+        slidesPerView: 2,
+    },
+    1440: {
+        slidesPerView:3,
+        spaceBetween: 30,
+    },
+    1920: {
+        slidesPerView:5,
+    }
+    }
+});
+var galleryTop = new Swiper('.gallery-top', {
+    loop:true,
+    effect: 'fade',
+    loopedSlides:5, //looped slides should be the same
+    navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+    swiper: galleryThumbs,
+    },
+});
+</script>
+</html>
