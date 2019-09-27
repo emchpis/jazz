@@ -597,7 +597,7 @@ input{
     }
     25%,
     75% {
-      background-color: #858585;
+      background-color: #e6e359;
     }
   }
 input:checked ~ .toggle{
