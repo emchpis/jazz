@@ -7,81 +7,32 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Knewave|Montserrat:400,500,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="css/colorbox.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/jquery.mousewheel.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/modernizr.custom.97074.js"></script>
+    <script src="js/jquery.mCustomScrollbar.js"></script>
+    <script src="js/jquery.hoverdir.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/imagesloaded.pkgd.js"></script>
+    <script src="js/jquery.transit.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/jquery.colorbox.js"></script>
     <title>자라섬페스티벌</title>
 </head>
-<script>
-$(function(){
-    
-    $(window).scroll(function(){
-        var scrT=$(window).scrollTop();
-        var sec1=$('#sec1').offset().top;
-        var sec2=$('#sec2').offset().top;
-        var sec3=$('#sec3').offset().top;
-        // console.log(sec3)
-        
-        $('section').each(function(i){
-            var offset=$(this).offset().top;
-            var next=$(this).next().offset().top;
-            var nnext=$(this).next().next().offset().top;
-            if(scrT+400>=offset && scrT<offset+700){
-                $(this).find('.poster, .pic, .produce, .gallery-top, .gallery-thumbs').addClass('on')
-               
-            }
-            if(scrT+400>=offset && scrT<=next){
-                $('.gnb li').removeClass('on')
-                $('.gnb li').eq(i).addClass('on')
-            }
-            $('.time, .history, .ticket').each(function(i){
-                var top =$(this).offset().top
-                if(scrT+500>=top){
-                    $(this).find('li').each(function(i){
-                    $(this).delay(i*200).animate({'opacity':'1'});
-                    })
-                }
-            })
-        })
-        
-    })
-    $('.date li').click(function(){
-        var i=$(this).index();
-        $('.timetable > li').removeClass('on')
-        $('.timetable > li').eq(i).addClass('on')
-        $('.date > li').removeClass('on')
-        $('.date > li').eq(i).addClass('on')
-        
-    })
-   
-    $('.gnb li').click(function(){
-        $('.gnb li').removeClass('on')
-        $(this).addClass('on')
-        // console.log(x)
-    })
-    $('section').mousewheel(function(event,delta){
-        if(delta>0){//up
-            var prev = $(this).prev().offset().top //다음의 첫부분
-            $('html, body').stop().animate({'scrollTop': prev},400)
-        }else if(delta<0){//down
-            var next = $(this).next().offset().top //다음의 첫부분
-            $('html, body').stop().animate({'scrollTop': next},400)
-        }
-    });
-})
-</script>
 <body>
     <!-- 배너 -->
     <section id="sec1">
         <nav>
             <div class="navwrap">
-                <h1><a href="#"><img src="img/logo (1).png" alt=""></a></h1>
+                <h1><img src="img/logo.png" alt=""></h1>
                 <ul class="gnb">
                     <li></li>
                     <li><a href="#sec2">INTRO</a><em></em></li>
                     <li><a href="#sec3">ARTIST</a><em></em></li>
                     <li><a href="#sec4">TIMETABLE</a><em></em></li>
-                    <li><a href="#sec5">HISTORY</a><em></em></li>
+                    <li><a href="#sec5">MEDIA</a><em></em></li>
                     <li><a href="#sec7">TICKET</a><em></em></li>
                 </ul>
             </div>
@@ -95,18 +46,21 @@ $(function(){
     </section>
     <!-- 소개 -->
     <section id="sec2">
-        <h1 class="head">INTRO</h1>
+        <img src="img/bgshape2.png" alt="" class="shape1">
         <div class="pic">
             <img src="img/pic.jpg" alt="">
         </div>
         <div class="produce">
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+            </svg>
             <h2 class="big">제16회 자라섬재즈페스티벌</h2>
             <p class="small">일시</p>
             <p class="medium">2019. 10. 4(Fri) ~ 6(Sun)</p>
             <p class="small">장소</p>
             <p class="medium">경기도 가평군 자라섬 일대</p>
-            <p class="desc">자라섬재즈는 이미 세계적으로 인정받는 성공적인 한국형 음악축제이다. 15회 동안 55개국, 1105팀의 아티스트가 축제를 방문한 것을 보아도 국제적인 축제임을 증명하기에 부족함이 없다. 더불어 한발 더 나아가 국제적인 교류가 활발하게 진행되고 있다는 부분이 더욱 의미가 있다.
-                    자라섬 재즈는 이전에 없던 새로운 여가 문화를 만들어냈다. 바로 '음악을 잘 몰라도 즐길 수 있는 소풍 같은 축제'이다.
+            <p class="desc">자라섬재즈는 세계적으로 인정받는 성공적인 <span>한국형 음악축제</span>이다. 15회 동안 55개국, 1105팀의 아티스트가 축제를 방문한 것을 보아도 국제적인 축제임을 증명하기에 부족함이 없다. 더불어 한발 더 나아가 국제적인 교류가 활발하게 진행되고 있다는 부분이 더욱 의미가 있다.
+                    자라섬 재즈는 이전에 없던 새로운 여가 문화를 만들어냈다. 바로 <span>'음악을 잘 몰라도 즐길 수 있는 소풍 같은 축제'</span>이다.
                     자라섬 재즈는 음악에 대해서는 타협하지 않지만, 보다 많은 관객들에게 즐거운 경험을 선사하는 방식으로 재즈의 대중화에 앞장서고 있다. 10월에는 가평, 자라섬으로 떠나보자!
                     </p>
             <button><a href="http://www.jarasumjazz.com/the16th/festival/intro/kr" target="_blank">자세히보기</a></button>
@@ -114,276 +68,517 @@ $(function(){
         <div class="poster">
             <img src="img/poster.jpg" alt="" class="posterimg">
         </div>
-        <img src="img/bgpoint4.png" alt="" class="point1">
     </section>
     <!-- 아티스트 -->
     <section id="sec3">
-        <h1 class="head">ARTIST</h1>
-        <img src="img/bgpoint1.png" alt="" class="point2">
-        <!-- Swiper -->
-        <div class="swiper-container gallery-top">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/blackstring.jpg" alt=""></div>  
-                    <div class="txt">
-                        <h1>Black String</h1>
-                        <h2>블랙스트링</h2>
-                        <h4>10.4 | 16:30 | Jazz Island</h4>
-                        <p>블랙스트링은 한국 전통음악에 기반을 두고 있으며, 재즈의 즉흥성과 조화를 이루며 현대적이고 독특한 아름다움이 담긴 음악을 선보이고 있다. 팀 결성 이후 블랙스트링은 뉴욕 링컨센터, 워싱턴 케네디센터, 베르린 필하모닉, 덴마크 로스킬데 페스티벌, 런던 재즈페스티벌, 뉴욕 윈터 재즈 페스티벌 및 프랑스, 스페인, 독일 등 전 세계 유수의 공연장과 페스티벌의 초청 투어를 이어오고 있다. 특히 2016년에는 월드뮤직엑스포(WOMEX)의 공식 쇼케이스에 초청되었고, 2018년에는 영국의 저명한 음악전문지 송라인즈(Songlines) 뮤직어워즈에서 한국 음악가 최초로 아시아&퍼시픽 부문을 수상하는 영광을 얻었다.</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/kalaha.jpg" alt=""></div>
-                    <div class="txt">
-                        <h1>Kalaha feat.Bora Kim</h1>
-                        <h2>칼라하 feat.김보라</h2>
-                        <h4>10.4 | 15:30 | Festival Lounge</h4>
-                        <p>덴마크 출신의 재즈 아티스트 두 명과 일렉트로닉 아티스트 두 명으로 구성된 칼라하(Kalaha)는, 그 조합에서 알 수 있듯이 일렉트로닉 재즈 스타일을 기반으로 하고 있지만, 멤버 각자가 지니고 있는 다양한 음악적, 문화적 배경과 경험 덕분에 상당히 다채로운 음악을 선보인다.한국 전통음악에도 관심이 많은 칼라하는 자라섬재즈페스티벌 무대를 위해 전통과 창작 국악 모두에서 뛰어난 실력으로 주목받고 있는 소리꾼 김보라를 보컬리스트로 초청했다. 최근 국악과 전자음악을 성공적으로 접목한 신노이(SINNOI)라는 프로젝트로 주목받고 있는 김보라는 칼라하와의 협연으로 이번 무대를 매우 색다르게 꾸밀 예정이다.</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/makiko.jpg" alt=""></div>
-                    <div class="txt">
-                        <h1>Makiko Hirabayashi Trio</h1>
-                        <h2>마키코 히라바야시 트리오</h2>
-                        <h4>10.5 | 12:30 | Festival Lounge</h4>
-                        <p>마키코 히라바야시 트리오는 연주자 개개인이 지니고 있는 다양한 문화적 배경을 통해 하나로 규정지을 수 없는 복합적인 감성의 음악을 들려준다. 피아니스트인 마키코 히라바야시는 일본에서 태어났지만, 어린 시절을 홍콩에서 보냈고, 미국에서 음악을 전공했으며, 지금은 덴마크에서 활동하고 있다. 퍼커션을 맡고 있는 마릴린 마주르(Marilyn Mazur)는 덴마크 출신으로, 마일스 데이비스(Miles Davis) 밴드로 활동하기도 하는 등 세계적인 퍼커션계의 마스터로 인정받고 있다. 베이스를 연주하는 Klavs Hovman은 독일 출신의 연주자로, 유럽과 미국의 여러 재즈 연주자들과 꾸준히 연주해오고 있으며, 라틴 아메리카 음악에도 조예가 깊다.</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/mattw.jpg" alt=""></div>
-                    <div class="txt">
-                        <h1>Matthew Whitaker Quartet</h1>
-                        <h2>매튜 휘테커 퀄텟</h2>
-                        <h4>10.5 | 19:10 | Jazz Island</h4>
-                        <p>2001년 미국 뉴저지의 해컨색이라는 작은 도시에서 태어난 매튜 휘테커는, 이제 겨우 18살이지만 벌써 데뷔 7년차의 재즈 피아니스트로, 13살에 하몬드 B-3 오르간을 제작하는 하몬드사의 최연소 후원 아티스트가 됐고, 15살에는 가장 큰 악기 제조사 가운데 하나인 야마하의 후원 아티스트가 됐다. 이미 정규 앨범을 2장이나 발표했으며, 2017년에 발표한 첫 앨범 [Outta the Box]는 그 해에 발표된 데뷔 앨범들 가운데 단연 최고의 작품이라는 평가를 받기도 했다. 지금까지 크리스찬 맥브라이드(Christian McBride), Dr. 로니 스미스(Dr. Lonnie Smith), 레지나 카터(Regina Carter) 등 수많은 재즈 거장들과 함께 무대에 올랐고, 매년 미국 전역과 유럽, 아시아 등 전세계를 돌며 공연하고 있다.</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/maureen.jpg" alt=""></div>
-                    <div class="txt">
-                        <h1>Maureen Choi Quartet</h1>
-                        <h2>모린 초이 퀄텟</h2>
-                        <h4>10.6 | 13:30 | Festival Lounge</h4>
-                        <p>모린 초이 퀄텟(Maureen Choi Quartet)은 한국계 미국인 바이올리니스트인 모린 초이의 재즈 앙상블이다. 모린 초이는 5살 때부터 바이올린을 연주하기 시작하여, 미시간 주립 대학교에서 클래식을 전공했다. 그러나 재즈 베이시스트 로드니 휘테커(Rodney Whitaker)에게 받은 레슨을 계기로 재즈의 매력에 눈을 뜨게 됐고, 당시 겪은 불의의 교통사고로 회복을 위해 2년간 쉬면서 재즈 아티스트가 되기로 결심한다.</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/nam.jpg" alt=""></div>
-                    <div class="txt">
-                        <h1>Yoosun Nam Quintet</h1>
-                        <h2>남유선 퀸텟</h2>
-                        <h4>10.4 | 14:30 | Festival Lounge</h4>
-                        <p>매혹적인 멜로디 메이커로 자신만의 스타일을 구축해나가는 차세대 재즈 뮤지션 
-                        서울예술대학, 버클리 음대, 뉴욕대학교, 그리고 아티스트 비자를 승인받고 뉴욕에서의
-                        음악 활동을 거쳐 10년의 미국 생활을 마친 재즈 색소포니스트 남유선은 섬세하면서도
-                        자신만의 스타일을 구축해나가는 차세대 재즈 뮤지션이다.이번 자라섬 재즈 페스티발에서는 2집 앨범 작업 멤버이기도 한 기타리스트 오진원,피아니스트 윤지희, 베이시스트 김영후, 드러머 김영진이 함께 한다. 수많은 라이브 무대를 통해
-                        구축된 완성도 높은 남유선 퀸텟만의 사운드로 2집 수록곡 중심으로 다양한 레퍼토리들을 설득력 있게 펼쳐낼 예정이다. 
-                        </p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/rymden.jpg" alt=""></div>
-                    <div class="txt">
-                        <h1>Rymden - Bugge Wesseltoft</h1>
-                        <h2>림든 - 부게 베셀토프트</h2>
-                        <h4>10.6 | 19:10 | Jazz Island</h4>
-                        <p>유럽 재즈를 사랑해온, 또는 이제 흥미를 갖기 시작한 팬이라면 꼭 기억해두어야할 이름이 하나 더 생겼다. 바로 림든(RYMDEN)이다. 피아노와 베이스, 드럼이라는 기본적인 트리오 구성의 이 앙상블은 지난해 겨울에 결성되어 채 1년도 되지 않았지만, 이미 유럽 재즈의 전설이자 첨단의 위치에 서있다. 피아니스트이자 전자 음악에도 일가견이 있는 노르웨이 출신의 Bugge Wesseltoft가 E.S.T.(에스뵈욘 스벤손 트리오, Esbjörn Svensson Trio)의 멤버였던 스웨덴 출신의 드러머 Magnus Öström과 베이시스트 Dan Berglund와 함께 팀을 이뤘기 때문이다. 이들은 지난 30여 년동안 매 순간 미래를 대변하는 첨단의 아티스트였고, 또 매번 그 순간이 지나고 나면 전설로 회자되온 인물들이다.</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="img"><img src="img/lopez.jpg" alt=""></div>
-                    <div class="txt">
-                        <h1>López-Nussa La Familia</h1>
-                        <h2>로페즈-누사 라 파밀리아</h2>
-                        <h4>10.6 | 16:30 | Jazz Island</h4>
-                        <p>밴드의 주축을 맡고 있는 Harold López-Nussa는 2015년 역사적인 미국과 쿠바의 국교정상화 이후 미국에 정식으로 앨범을 발표한 첫 쿠바 아티스트다. 쿠바의 수도인 아바나(Havana)에서 태어난 그는, 8살 때부터 클래식 피아노를 배우기 시작했다. 10살에 쿠바의 피아노 콩쿨에서 우승을 한 Harold는 이탈리아 등 해외에서도 클래식 피아노로 우승을 하는 등 재능을 보였다. 이후 아버지와 삼촌의 영향으로 재즈를 연주하게 됐고, 20대 초반이던 2005년에는 스위스의 몽트뢰 재즈 페스티벌 피아노 콩쿨에서 우승하면서 세계적인 주목을 받았다.</p>
-                    </div>
-                </div>
+        <div class="lp">
+            <div class="vinyl">
+                <ul id="da-thumbs" class="da-thumbs">
+                    <li class="on">
+                        <div>Black String</div>
+                    </li>
+                    <li>
+                        <div>Kalaha</div>
+                    </li>
+                    <li>
+                        <div>López-Nussa La Familia</div>
+                    </li>
+                    <li>
+                        <div>Makiko Hirabayashi Trio</div>
+                    </li>
+                    <li>
+                        <div>Matthew Whitaker Quartet</div>
+                    </li>
+                    <li>
+                        <div>Maureen Choi Quartet</div>
+                    </li>
+                    <li>
+                        <div>남유선 퀸텟</div>
+                    </li>
+                    <li>
+                        <div>Rymden-Bugge Wesseltoft</div>
+                    </li>
+                    <li>
+                        <div>TRIOWORKS</div>
+                    </li>
+                </ul>
             </div>
+            <ul class="record">
+                <li class="on"><img src="images/lp1.png" alt=""></li>
+                <li><img src="images/lp2.png" alt=""></li>
+                <li><img src="images/lp3.png" alt=""></li>
+                <li><img src="images/lp4.png" alt=""></li>
+                <li><img src="images/lp5.png" alt=""></li>
+                <li><img src="images/lp6.png" alt=""></li>
+                <li><img src="images/lp7.png" alt=""></li>
+                <li><img src="images/lp8.png" alt=""></li>
+                <li><img src="images/lp9.png" alt=""></li>
+            </ul>
         </div>
-        <div class="swiper-container gallery-thumbs">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image: url(img/blackstring.jpg)"></div>
-                <div class="swiper-slide" style="background-image: url(img/kalaha.jpg)"></div>
-                <div class="swiper-slide" style="background-image: url(img/makiko.jpg)"></div>
-                <div class="swiper-slide" style="background-image: url(img/mattw.jpg)"></div>
-                <div class="swiper-slide" style="background-image: url(img/maureen.jpg)"></div>
-                <div class="swiper-slide" style="background-image: url(img/nam.jpg)"></div>
-                <div class="swiper-slide" style="background-image: url(img/rymden.jpg)"></div>
-                <div class="swiper-slide" style="background-image: url(img/lopez.jpg)"></div>
-            </div>
-        </div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <ul class="txt">
+            <li class="on">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>Black String</b>
+                <strong>블랙스트링</strong>
+                <span>10.4 | 16:30 | Jazz Island</span>
+                <p>블랙스트링은 한국 전통음악에 기반을 두고 있으며, 재즈의 즉흥성과 조화를 이루며 현대적이고 독특한 아름다움이 담긴 음악을 선보이고 있다. 팀 결성 이후 블랙스트링은 뉴욕 링컨센터, 워싱턴 케네디센터, 베르린 필하모닉, 덴마크 로스킬데 페스티벌, 런던 재즈페스티벌, 뉴욕 윈터 재즈 페스티벌 및 프랑스, 스페인, 독일 등 전 세계 유수의 공연장과 페스티벌의 초청 투어를 이어오고 있다. 특히 2016년에는 월드뮤직엑스포(WOMEX)의 공식 쇼케이스에 초청되었고, 2018년에는 영국의 저명한 음악전문지 송라인즈(Songlines) 뮤직어워즈에서 한국 음악가 최초로 아시아&amp;퍼시픽 부문을 수상하는 영광을 얻었다.</p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>Kalaha feat.Bora Kim</b>
+                <strong>칼라하 feat.김보라</strong>
+                <span>10.4 | 15:30 | Festival Lounge</span>
+                <p>덴마크 출신의 재즈 아티스트 두 명과 일렉트로닉 아티스트 두 명으로 구성된 칼라하(Kalaha)는, 그 조합에서 알 수 있듯이 일렉트로닉 재즈 스타일을 기반으로 하고 있지만, 멤버 각자가 지니고 있는 다양한 음악적, 문화적 배경과 경험 덕분에 상당히 다채로운 음악을 선보인다.한국 전통음악에도 관심이 많은 칼라하는 자라섬재즈페스티벌 무대를 위해 전통과 창작 국악 모두에서 뛰어난 실력으로 주목받고 있는 소리꾼 김보라를 보컬리스트로 초청했다. 최근 국악과 전자음악을 성공적으로 접목한 신노이(SINNOI)라는 프로젝트로 주목받고 있는 김보라는 칼라하와의 협연으로 이번 무대를 매우 색다르게 꾸밀 예정이다.</p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>López-Nussa La Familia</b>
+                <strong>로페즈-누사 라 파밀리아</strong>
+                <span>10.6 | 16:30 | Jazz Island</span>
+                <p>밴드의 주축을 맡고 있는 Harold López-Nussa는 2015년 역사적인 미국과 쿠바의 국교정상화 이후 미국에 정식으로 앨범을 발표한 첫 쿠바 아티스트다. 쿠바의 수도인 아바나(Havana)에서 태어난 그는, 8살 때부터 클래식 피아노를 배우기 시작했다. 10살에 쿠바의 피아노 콩쿨에서 우승을 한 Harold는 이탈리아 등 해외에서도 클래식 피아노로 우승을 하는 등 재능을 보였다. 이후 아버지와 삼촌의 영향으로 재즈를 연주하게 됐고, 20대 초반이던 2005년에는 스위스의 몽트뢰 재즈 페스티벌 피아노 콩쿨에서 우승하면서 세계적인 주목을 받았다.</p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>Makiko Hirabayashi Trio</b>
+                <strong>마키코 히라바야시 트리오</strong>
+                <span>10.5 | 12:30 | Festival Lounge</span>
+                <p>마키코 히라바야시 트리오는 연주자 개개인이 지니고 있는 다양한 문화적 배경을 통해 하나로 규정지을 수 없는 복합적인 감성의 음악을 들려준다. 피아니스트인 마키코 히라바야시는 일본에서 태어났지만, 어린 시절을 홍콩에서 보냈고, 미국에서 음악을 전공했으며, 지금은 덴마크에서 활동하고 있다. 퍼커션을 맡고 있는 마릴린 마주르(Marilyn Mazur)는 덴마크 출신으로, 마일스 데이비스(Miles Davis) 밴드로 활동하기도 하는 등 세계적인 퍼커션계의 마스터로 인정받고 있다. 베이스를 연주하는 Klavs Hovman은 독일 출신의 연주자로, 유럽과 미국의 여러 재즈 연주자들과 꾸준히 연주해오고 있으며, 라틴 아메리카 음악에도 조예가 깊다.</p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>Matthew Whitaker Quartet</b>
+                <strong>매튜 휘테커 퀄텟</strong>
+                <span>10.5 | 19:10 | Jazz Island</span>
+                <p>2001년 미국 뉴저지의 해컨색이라는 작은 도시에서 태어난 매튜 휘테커는, 이제 겨우 18살이지만 벌써 데뷔 7년차의 재즈 피아니스트로, 13살에 하몬드 B-3 오르간을 제작하는 하몬드사의 최연소 후원 아티스트가 됐고, 15살에는 가장 큰 악기 제조사 가운데 하나인 야마하의 후원 아티스트가 됐다. 이미 정규 앨범을 2장이나 발표했으며, 2017년에 발표한 첫 앨범 [Outta the Box]는 그 해에 발표된 데뷔 앨범들 가운데 단연 최고의 작품이라는 평가를 받기도 했다. 지금까지 크리스찬 맥브라이드(Christian McBride), Dr. 로니 스미스(Dr. Lonnie Smith), 레지나 카터(Regina Carter) 등 수많은 재즈 거장들과 함께 무대에 올랐고, 매년 미국 전역과 유럽, 아시아 등 전세계를 돌며 공연하고 있다.</p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>Maureen Choi Quartet</b>
+                <strong>모린 초이 퀄텟</strong>
+                <span>10.6 | 13:30 | Festival Lounge</span>
+                <p>모린 초이 퀄텟(Maureen Choi Quartet)은 한국계 미국인 바이올리니스트인 모린 초이의 재즈 앙상블이다. 모린 초이는 5살 때부터 바이올린을 연주하기 시작하여, 미시간 주립 대학교에서 클래식을 전공했다. 그러나 재즈 베이시스트 로드니 휘테커(Rodney Whitaker)에게 받은 레슨을 계기로 재즈의 매력에 눈을 뜨게 됐고, 당시 겪은 불의의 교통사고로 회복을 위해 2년간 쉬면서 재즈 아티스트가 되기로 결심한다.모린 초이 퀄텟은 지난 2018년 스페인 마드리드의 예술극장인 아를레킨 극장(Teatro Arlequín Gran Vía)의 후원 아티스트로 발탁됐고, 현재 스페인 국립 발레단과도 협업하고 있다. 그리고 올해에는 스페인 정부의 문화기관인 세르반테스 협회(Instituto Cervantes)의 공식 후원으로 세계 각국을 돌며 공연 중이다. 이제 곧 자라섬을 방문하는 모린 초이 퀄텟은 열정적인 플라멩코 리듬 위로 우아하게 펼쳐지는 재즈 선율을 통해 관객들의 마음을 들뜨게 만들 것이다.</p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>Yoosun Nam Quintet</b>
+                <strong>남유선 퀸텟</strong>
+                <span>10.4 | 14:30 | Festival Lounge</span>
+                <p>매혹적인 멜로디 메이커로 자신만의 스타일을 구축해나가는 차세대 재즈 뮤지션 
+                서울예술대학, 버클리 음대, 뉴욕대학교, 그리고 아티스트 비자를 승인받고 뉴욕에서의
+                음악 활동을 거쳐 10년의 미국 생활을 마친 재즈 색소포니스트 남유선은 섬세하면서도
+                자신만의 스타일을 구축해나가는 차세대 재즈 뮤지션이다.이번 자라섬 재즈 페스티발에서는 2집 앨범 작업 멤버이기도 한 기타리스트 오진원,피아니스트 윤지희, 베이시스트 김영후, 드러머 김영진이 함께 한다. 수많은 라이브 무대를 통해
+                구축된 완성도 높은 남유선 퀸텟만의 사운드로 2집 수록곡 중심으로 다양한 레퍼토리들을 설득력 있게 펼쳐낼 예정이다. 
+                </p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>Rymden - Bugge Wesseltoft</b>
+                <strong>림든 - 부게 베셀토프트</strong>
+                <span>10.6 | 19:10 | Jazz Island</span>
+                <p>유럽 재즈를 사랑해온, 또는 이제 흥미를 갖기 시작한 팬이라면 꼭 기억해두어야할 이름이 하나 더 생겼다. 바로 림든(RYMDEN)이다. 피아노와 베이스, 드럼이라는 기본적인 트리오 구성의 이 앙상블은 지난해 겨울에 결성되어 채 1년도 되지 않았지만, 이미 유럽 재즈의 전설이자 첨단의 위치에 서있다. 피아니스트이자 전자 음악에도 일가견이 있는 노르웨이 출신의 Bugge Wesseltoft가 E.S.T.(에스뵈욘 스벤손 트리오, Esbjörn Svensson Trio)의 멤버였던 스웨덴 출신의 드러머 Magnus Öström과 베이시스트 Dan Berglund와 함께 팀을 이뤘기 때문이다. 이들은 지난 30여 년동안 매 순간 미래를 대변하는 첨단의 아티스트였고, 또 매번 그 순간이 지나고 나면 전설로 회자되온 인물들이다.</p>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>
+                <b>TRIOWORKS</b>
+                <strong>트리오웍스 - 오종대 / 찰리정 / 성기문</strong>
+                <span>10.6 | 15:30 | Festival Lounge</span>
+                <p>한국의 대표적인 재즈드러머 오종대는 다양한 편성의 밴드들을 이끌며 새로운 시도를 계속해 왔다. 이번 자라섬 재즈 페스티발 무대에 선보이는 ‘TrioWorks’는 국내에서는 처음으로 선보이는 Organ Trio로, 찰리정(guitar), 성기문(Hammond Organ)과 함께 2018년 봄에 결성한 팀이다.TrioWork의 음악은 깊은 블루스 정서를 내포하고 있는 찰리정의 기타 사운드와 자작곡, 하몬드 오르가니스트이면서 재즈피아니스트인 성기문의 흑인영가의 soul과 spirit이 담긴 연주, 그리고 여기에 드러머 오종대의 풍부한 음악적 경험이 더해지면서 트리오가 들려주는 가장 화려하고 깊은 사운드를 들려준다.</p>
+            </li>
+        </ul>
+        <img src="img/bgshape.png" alt="" class="point3">
     </section>
     <!-- 타임테이블 -->
     <section id="sec4">
-        <h1 class="head">TIMETABLE</h1>
-        <div class="point3"><img src="img/bgpoint3.png"></div>
-        <ul class="date">
-            <li class="on">10.4</li>
-            <li>10.5</li>
-            <li>10.6</li>
-        </ul>
-        <ul class="timetable">
-            <li class="on">
-                <ul class="time">
-                    <li>
-                        <em>14:30 <br> ~ <br> 15:20</em>
-                        <div class="right">
-                            <p>Yoosun Nam Quintet</p>
-                            <span>남유선 퀸텟</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>15:30 <br> ~ <br> 16:20</em>
-                        <div class="right">
-                            <p>Kalaha feat.Bora Kim</p>
-                            <span>칼라하 feat.김보라</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>16:30 <br> ~ <br> 17:20</em>
-                        <div class="right">
-                            <p>Black String</p>
-                            <span>블랙스트링</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>17:30 <br> ~ <br> 18:20</em>
-                        <div class="right">
-                            <p>Southern Gyeonggi Jazz</p>
-                            <span>경기남부재즈</span>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <ul class="time">
-                    <li>
-                        <em>12:30 <br> ~ <br> 13:20</em>
-                        <div class="right">
-                            <p>Makiko Hirabayashi Trio</p>
-                            <span>마키코 히라바야시 트리오</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>13:30 <br> ~ <br> 14:20</em>
-                        <div class="right">
-                            <p>Matthew Whitaker Quartet</p>
-                            <span>매튜 휘테커 퀄텟</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>14:30 <br> ~ <br> 15:20</em>
-                        <div class="right">
-                            <p>Morten Schantz GODSPEED</p>
-                            <span>모튼 샨츠 갓스피드</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>15:30 <br> ~ <br> 16:20</em>
-                        <div class="right">
-                            <p>Tineke Postma Group 'FREYA'</p>
-                            <span>티네케 포스트마 그룹 '프레야'</span>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <ul class="time">
-                    <li>
-                        <em>14:30 <br> ~ <br> 15:20</em>
-                        <div class="right">
-                            <p>López-Nussa La Familia</p>
-                            <span>로페즈-누사 라 파밀리아</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>15:30 <br> ~ <br> 16:20</em>
-                        <div class="right">
-                            <p>Maureen Choi Quartet</p>
-                            <span>모린 초이 퀄텟</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>16:30 <br> ~ <br> 17:20</em>
-                        <div class="right">
-                            <p>Rymden - Bugge Wesseltoft</p>
-                            <span>림든 - 부게 베셀토프트</span>
-                        </div>
-                    </li>
-                    <li>
-                        <em>17:30 <br> ~ <br> 18:20</em>
-                        <div class="right">
-                            <p>Soo Jin Suh Band</p>
-                            <span>서수진 밴드</span>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+        <img src="img/yellow.png" alt="" class="yellow">
+        <div class="listwrap">
+            <ul class="list">
+                <li data-filter="*" class="on">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                            <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                        </svg>All</li>
+                <li data-filter=".first">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                            <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                        </svg>10.4</li>
+                <li data-filter=".second">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                            <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                        </svg>10.5</li>
+                <li data-filter=".third">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                            <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                        </svg>10.6</li>
+                <li data-filter=".jazz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                            <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                        </svg>jazz<br>island</li>
+                <li data-filter=".lounge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                            <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                        </svg>festival<br>lounge</li>
+                <li data-filter=".post">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                            <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                        </svg>welcome<br>post</li>
+            </ul>
+        </div>
+        <div class="gridwrap">
+        <div class="grid">
+            <div class="grid-item three first lounge">
+                <div class="top">
+                    OCT.4 | 13:30 ~ 14:20
+                </div>
+                <p class="name">Southern Gyeonggi Jazz</p>
+                <p class="subname">경기남부재즈</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item two first lounge">
+                <div class="top">
+                    OCT.4 | 14:30 ~ 15:20
+                </div>
+                <p class="name">Yoosun Nam Quintet</p>
+                <p class="subname">남유선 퀸텟</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item one first lounge">
+                <div class="top">
+                    OCT.4 | 15:30 ~ 16:20
+                </div>
+                <p class="name">Kalaha feat.Bora Kim</p>
+                <p class="subname">칼라하 feat.김보라</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item two first jazz">
+                <div class="top">
+                    OCT.4 | 16:30 ~ 17:30
+                </div>
+                <p class="name">Black String</p>
+                <p class="subname">블랙스트링</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item one first jazz">
+                <div class="top">
+                    OCT.4 | 17:50 ~ 18:50
+                </div>
+                <p class="name">4 Wheel Drive</p>
+                <p class="subname">포 휠 드라이브</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item three first jazz">
+                <div class="top">
+                    OCT.4 | 19:10 ~ 20:10
+                </div>
+                <p class="name">Jon Cleary & The Absolute Monster Gentlemen</p>
+                <p class="subname">존 클리어리 & 더 앱솔루트 몬스터 젠틀맨</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item three first jazz">
+                <div class="top">
+                    OCT.4 | 20:30 ~ 21:40
+                </div>
+                <p class="name">Ozmosys feat. Omar Hakim</p>
+                <p class="subname">오지모시스 feat. 오마르 하킴</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+
+            <!-- 10.5 -->
+            
+            <div class="grid-item one second post">
+                <div class="top">
+                    OCT.5 | 12:00 ~ 12:45
+                </div>
+                <p class="name">Buskingdom</p>
+                <p class="subname">버스킹덤</p>
+                <p class="place">WELCOME POST</p>
+            </div>
+            <div class="grid-item three second post">
+                <div class="top">
+                    OCT.5 | 13:00 ~ 13:45
+                </div>
+                <p class="name">Soundpost</p>
+                <p class="subname">사운드 포스트</p>
+                <p class="place">WELCOME POST</p>
+            </div> 
+            <div class="grid-item two second post">
+                <div class="top">
+                    OCT.5 | 14:00 ~ 13:45
+                </div>
+                <p class="name">Mood List</p>
+                <p class="subname">무드리스트</p>
+                <p class="place">WELCOME POST</p>
+            </div>
+            <div class="grid-item two second post">
+                <div class="top">
+                    OCT.5 | 15:00 ~ 15:45
+                </div>
+                <p class="name">Long Island Jass Band</p>
+                <p class="subname">롱아일랜드 재즈밴드</p>
+                <p class="place">WELCOME POST</p>
+            </div>
+            <div class="grid-item one second lounge">
+                <div class="top">
+                    OCT.5 | 12:30 ~ 13:20
+                </div>
+                <p class="name">Makiko Hirabayashi Trio</p>
+                <p class="subname">마키코 히라바야시 트리오</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item three second lounge">
+                <div class="top">
+                    OCT.5 | 13:30 ~ 14:20
+                </div>
+                <p class="name">Morten Schantz GODSPEED</p>
+                <p class="subname">모튼 샨츠 갓스피드</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item three second lounge">
+                <div class="top">
+                    OCT.5 | 14:30 ~ 15:20
+                </div>
+                <p class="name">Heo So Young</p>
+                <p class="subname">허소영</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item two second lounge">
+                <div class="top">
+                    OCT.5 | 15:30 ~ 16:20
+                </div>
+                <p class="name">Horse Orchestra</p>
+                <p class="subname">홀스 오케스트라</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item one second jazz">
+                <div class="top">
+                    OCT.5 | 16:30 ~ 17:30
+                </div>
+                <p class="name">Tineke Postma Group 'FREYA'</p>
+                <p class="subname">티네케 포스트마 그룹 '프레야'</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item one second jazz">
+                <div class="top">
+                    OCT.5 | 17:50 ~ 18:50
+                </div>
+                <p class="name">Omar Sosa quarteto Afro Cubano</p>
+                <p class="subname">오마르 소사 콰르테토 아프로 쿠바노</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item three second jazz">
+                <div class="top">
+                    OCT.5 | 19:10 ~ 20:10
+                </div>
+                <p class="name">Matthew Whitaker Quartet</p>
+                <p class="subname">매튜 휘테커 퀄텟</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item two second jazz">
+                <div class="top">
+                    OCT.5 | 20:30 ~ 21:40
+                </div>
+                <p class="name">The Danish Radio Big Band & Marilyn Mazur</p>
+                <p class="subname">더 대니쉬 라디오 빅밴드 & 마릴린 마주르</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+
+            <!-- 10.6 -->
+            
+            <div class="grid-item three third post">
+                <div class="top">
+                    OCT.6 | 12:00 ~ 12:45
+                </div>
+                <p class="name">Dodam Dodam band</p>
+                <p class="subname">도담도담밴드</p>
+                <p class="place">WELCOME POST</p>
+            </div>
+            <div class="grid-item one third post">
+                <div class="top">
+                    OCT.6 | 13:00 ~ 13:45
+                </div>
+                <p class="name">Pursean</p>
+                <p class="subname">펄션</p>
+                <p class="place">WELCOME POST</p>
+            </div>
+            <div class="grid-item one third post">
+                <div class="top">
+                    OCT.6 | 14:00 ~ 14:45
+                </div>
+                <p class="name">Ohgaram Quartet</p>
+                <p class="subname">오가람쿼텟</p>
+                <p class="place">WELCOME POST</p>
+            </div>
+            <div class="grid-item two third post">
+                <div class="top">
+                    OCT.6 | 15:00 ~ 14:45
+                </div>
+                <p class="name">Cream</p>
+                <p class="subname">크림</p>
+                <p class="place">WELCOME POST</p>
+            </div>
+            <div class="grid-item three third lounge">
+                <div class="top">
+                    OCT.6 | 12:30 ~ 13:20
+                </div>
+                <p class="name">DIMA Jazz Orchestra</p>
+                <p class="subname">동아방송예술대 재즈 오케스트라</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item one third lounge">
+                <div class="top">
+                    OCT.6 | 13:30 ~ 14:20
+                </div>
+                <p class="name">Maureen Choi Quartet</p>
+                <p class="subname">모린 초이 퀄텟</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item three third lounge">
+                <div class="top">
+                    OCT.6 | 14:30 ~ 15:20
+                </div>
+                <p class="name">Soo Jin Suh Band</p>
+                <p class="subname">서수진 밴드</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item one third lounge">
+                <div class="top">
+                    OCT.6 | 15:30 ~ 16:20
+                </div>
+                <p class="name">TrioWorks</p>
+                <p class="subname">트리오웍스</p>
+                <p class="place">FESTIVAL LOUNGE</p>
+            </div>
+            <div class="grid-item two third jazz">
+                <div class="top">
+                    OCT.6 | 16:30 ~ 17:20
+                </div>
+                <p class="name">López-Nussa La Familia</p>
+                <p class="subname">로페즈-누사 라 파밀리아</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item one third jazz">
+                <div class="top">
+                    OCT.6 | 17:50 ~ 18:50
+                </div>
+                <p class="name">Jarasum Beyond</p>
+                <p class="subname">자라섬 비욘드</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item two third jazz">
+                <div class="top">
+                    OCT.6 | 19:10 ~ 20:10
+                </div>
+                <p class="name">Rymden</p>
+                <p class="subname">림든 - 부게 베셀토프트</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+            <div class="grid-item three third jazz">
+                <div class="top">
+                    OCT.6 | 20:30 ~ 21:40
+                </div>
+                <p class="name">Blues Power</p>
+                <p class="subname">블루스 파워</p>
+                <p class="place">JAZZ ISLAND</p>
+            </div>
+        </div>
+    </div>
     </section>
-    <!-- 히스토리 -->
+    <!-- 미디어 -->
     <section id="sec5">
-        <h1 class="head">HISTORY</h1>
-        <div class="point4"><img src="img/bgpoint1.png"></div>
-        <ul class="history">
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2018" target="_blank">
-                <img src="img/2018.jpg">
-                <p>제15회 | 2018. 10. 12 (FRI) – 14 (SUN)</p>
-             </a>
-            </li>
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2017" target="_blank">
-                <img src="img/2017.jpg">
-                <p>제14회 | 2017. 10. 20 (FRI) – 22 (SUN)</p>
-             </a>
-            </li>
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2016" target="_blank">
-                <img src="img/2016.jpg">
-                <p>제13회 | 2016. 10. 1 (SAT) – 3 (MON)</p>
-             </a>
-            </li>
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2015" target="_blank">
-                <img src="img/2015.jpg">
-                <p>제12회 | 2015. 10. 9 (FRI) – 11 (SUN)</p>
-             </a>
-            </li>
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2014" target="_blank">
-                <img src="img/2014.jpg">
-                <p>제11회 | 2014. 10. 3 (FRI) – 5 (SUN)</p>
-             </a>
-            </li>
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2013" target="_blank">
-                <img src="img/2013.jpg">
-                <p>제10회 | 2013. 10. 3 (THU) – 6 (SUN)</p>
-             </a>
-            </li>
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2012" target="_blank">
-                <img src="img/2012.jpg">
-                <p>제9회 | 2012. 10. 12 (FRI) – 14 (SUN)</p>
-             </a>
-            </li>
-            <li>
-             <a href="http://www.jarasumjazz.com/the16th/festival/history-2018" target="_blank">
-                <img src="img/2011.jpg">
-                <p>제8회 | 2011. 10. 1 (SAT) – 3 (MON)</p>
-             </a>
-            </li>
-        </ul>
+       <div class="news">
+           <div class="news_wrap">
+               <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>NEWS</h2>
+                <a href="#" class="more"></a>
+               <ul class="news_list">
+                   <li><a href="#">제16회 자라섬재즈페스티벌 '테렌스 블랜차드 featuring 더 이-콜렉티브' 공연 취소 안내</a><span>2019.10.03</span></li>
+                   <li><a href="#">제16회 자라섬재즈페스티벌 취재 신청 안내</a><span>2019.09.10</span></li>
+                   <li><a href="#">2019 제16회 자라섬재즈페스티벌 자라지기 발표 !</a><span>2019.08.09</span></li>
+                   <li><a href="#">자라섬재즈페스티벌 '카카오톡 플러스 친구'</a><span>2018.10.09</span></li>
+                   <li><a href="#">네이버 스마트 스토어 '자라섬 재즈 숍' 일시 판매중지 (10.2~10.6)</a><span>2019.10.03</span></li>
+                   <li><a href="#">제16회 자라섬재즈페스티벌 '주차구역' 이용 안내</a><span>2019.09.30</span></li>
+                   <li><a href="#">제16회 자라섬재즈 '한 주 먼저 떠나보는 자라섬재즈 랜선 피크닉' with Kakaomap</a><span>2019.09.26</span></li>
+                   <li><a href="#">[Special Articles] 한 장에 담아냈다, 자라섬의 마법 같은 '재즈 스토리'</a><span>2019.09.05</span></li>
+               </ul>
+           </div>
+       </div>
+       <div class="photo">
+            <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+            </svg>PHOTO</h2>
+            <a href="#" class="more"></a>
+            <ul class="gallery">
+                <li><a class="group1" href="images/thum1.jpg"><img src="images/thum1.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum2.jpg"><img src="images/thum2.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum3.jpg"><img src="images/thum3.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum4.jpg"><img src="images/thum4.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum5.jpg"><img src="images/thum5.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum6.jpg"><img src="images/thum6.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum7.jpg"><img src="images/thum7.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum8.jpg"><img src="images/thum8.jpg" alt=""></a></li>
+                <li><a class="group1" href="images/thum9.jpg"><img src="images/thum9.jpg" alt=""></a></li>
+            </ul>
+       </div>
+       <div class="movie">
+            <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+            </svg>VIDEO</h2>
+            <a href="#" class="more"></a>
+            <ul class="gallery">
+                <li><em></em><img src="images/01.jpg" alt=""></li>
+                <li><em></em><img src="images/02.jpg" alt=""></li>
+                <li><em></em><img src="images/03.jpg" alt=""></li>
+                <li><em></em><img src="images/04.jpg" alt=""></li>
+                <li><em></em><img src="images/05.jpg" alt=""></li>
+                <li><em></em><img src="images/06.jpg" alt=""></li>
+                <li><em></em><img src="images/07.jpg" alt=""></li>
+                <li><em></em><img src="images/08.jpg" alt=""></li>
+                <li><em></em><img src="images/09.jpg" alt=""></li>
+            </ul>
+        </div>
+       <div class="guide">
+            <div class="news_wrap">
+                <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="7" viewBox="0 0 73.94 14.19">
+                    <polyline points="2.83 2.83 11.36 11.36 19.9 2.83 28.43 11.36 36.97 2.83 45.5 11.36 54.04 2.83 62.58 11.36 71.11 2.83" style="stroke-dashoffset: 2e-05; stroke-dasharray: none;"></polyline>
+                </svg>GUIDE</h2>
+                <a href="#" class="more"></a>
+                <ul class="news_list">
+                    <li><a href="#">프로그램북 | PROGRAM BOOK</a><span>2019.10.03</span></li>
+                    <li><a href="#">지도 | MAP</a><span>2019.09.10</span></li>
+                    <li><a href="#">페스티벌 상품 | FESTIVAL MD</a><span>2019.08.09</span></li>
+                    <li><a href="#">물품보관 | LOCKERS</a><span>2018.10.09</span></li>
+                    <li><a href="#">티켓 & 손목팔찌 | TICKET & BRACELET</a><span>2019.10.03</span></li>
+                    <li><a href="#">교통 | HOW TO GO</a><span>2019.09.30</span></li>
+                    <li><a href="#">YES or NO</a><span>2019.09.26</span></li>
+                    <li><a href="#">여행정보 | TOUR GUIDE</a><span>2019.09.05</span></li>
+                </ul>
+            </div>
+       </div>
     </section>
     <!-- 티켓 -->
     <section id="sec7">
-        <h1 class="head">TICKET</h1>
+        <img src="img/bgshape3.png" alt="" class="shape3">
         <ul class="ticket">
             <li>
                 <input type="checkbox">
@@ -418,6 +613,10 @@ $(function(){
             </li>
         </ul>
     </section>
+    <svg class="waves-footer" width="100%" viewBox="0 0 1280 169" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M621 151.5C448 151.5 453 31.5 298.5 31.5C175.7 31.5 48.3333 111.5 0 151.5V168.5H1280V151.5C1235 113.5 1111 29 1001.5 29C851 29 715 151.5 621 151.5Z" fill="#EDE8F3"></path>
+        <path d="M0 48.5001V168.5L1280 169V81.0001C1263.5 90.5001 1234.5 122 1181.5 122C1058 122 978 0.00012207 813 0.00012207C666 0 611.5 123.5 429.5 123.5C276 123.5 272 3.00012 115 3.00012C51 3.00012 11.6667 33.3335 0 48.5001Z" fill="#5032ff"></path>
+    </svg>
     <!-- 푸터 -->
     <footer>
         <div class="wrap">
@@ -439,43 +638,7 @@ $(function(){
             </ul>
         </div>
         <p>COPYRIGHT 2019 JARASUM JAZZ FESTIVAL. ALL RIGHTS RESERVED.</p>
-        <div class="bg"></div>
+        <!-- <div class="bg"></div> -->
     </footer>
 </body>
-<script src="js/swiper.min.js"></script>
-<script>
-var galleryThumbs = new Swiper('.gallery-thumbs', {
-    spaceBetween: 30,
-    slidesPerView: 5,
-    loop: true,
-    freeMode: true,
-    loopedSlides:5, //looped slides should be the same
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-    breakpoints: {
-    513: {
-        slidesPerView: 2,
-    },
-    1440: {
-        slidesPerView:3,
-        spaceBetween: 30,
-    },
-    1920: {
-        slidesPerView:5,
-    }
-    }
-});
-var galleryTop = new Swiper('.gallery-top', {
-    loop:true,
-    effect: 'fade',
-    loopedSlides:5, //looped slides should be the same
-    navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-    },
-    thumbs: {
-    swiper: galleryThumbs,
-    },
-});
-</script>
 </html>
